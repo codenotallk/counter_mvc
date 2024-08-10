@@ -42,3 +42,25 @@ sat scheduler needs an event.
 
 
 And we are receiving the data.
+
+
+We already finished the counter service. Let's mark.
+
+It's alredy sending messages. Now we need to implement the display service.
+These are the structure.
+
+Now we can implement the dto and data provider
+
+We can now join all together to create the first thread.
+
+Now the display service can receive messages and store in the internal repository.
+The repository here is just a memory, we can call a class holder.
+
+We can start the second part: Presenter Thread
+
+Presenter and Controller ready.
+
+That's it. We did it.  
+
+We have two services communicating each other. Both were implemented in MVC pattern.
+We could solve this using a for and a print. But the point here is: We can realize how many things we can learn through easy stuff and a little creativity.

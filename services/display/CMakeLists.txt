@@ -1,23 +1,27 @@
-cmake_minimum_required(VERSION 3.7.0)
-project (counter_mvc)
+add_executable (display_service "")
+target_link_libraries (display_service PUBLIC sat pthread)
 
-set (CMAKE_C_FLAGS "-D_GNU_SOURCE -Wall -std=c99")
-set (CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
-set (LIBRARY_OUTPUT_PATH ${CMAKE_BINARY_DIR}/lib)
-set (CMAKE_BUILD_TYPE Debug)
-
-add_executable (counter_mvc "")
-target_link_libraries (counter_mvc PUBLIC sat)
-
-target_sources (counter_mvc
+target_sources (display_service
   PUBLIC
-  ${CMAKE_CURRENT_LIST_DIR}/src/application.c
-  ${CMAKE_CURRENT_LIST_DIR}/src/main.c
+  ${CMAKE_CURRENT_LIST_DIR}/main.c
+  ${CMAKE_CURRENT_LIST_DIR}/domain/model/counter.c
+  ${CMAKE_CURRENT_LIST_DIR}/domain/repository/counter_repository.c
+  ${CMAKE_CURRENT_LIST_DIR}/controller/controller.c
+  ${CMAKE_CURRENT_LIST_DIR}/controller/provider/counter_json.c
+  ${CMAKE_CURRENT_LIST_DIR}/controller/dto/counter_input.c
+  ${CMAKE_CURRENT_LIST_DIR}/presenter/presenter.c
+  ${CMAKE_CURRENT_LIST_DIR}/presenter/dto/counter_representation.c
+  ${CMAKE_CURRENT_LIST_DIR}/presenter/view/cli.c
 )
 
-target_include_directories (counter_mvc
+target_include_directories (display_service
   PUBLIC
-  ${CMAKE_CURRENT_LIST_DIR}/include
+  ${CMAKE_CURRENT_LIST_DIR}/domain/model
+  ${CMAKE_CURRENT_LIST_DIR}/domain/repository
+  ${CMAKE_CURRENT_LIST_DIR}/controller
+  ${CMAKE_CURRENT_LIST_DIR}/controller/provider
+  ${CMAKE_CURRENT_LIST_DIR}/controller/dto
+  ${CMAKE_CURRENT_LIST_DIR}/presenter
+  ${CMAKE_CURRENT_LIST_DIR}/presenter/dto
+  ${CMAKE_CURRENT_LIST_DIR}/presenter/view
 )
-
-install (TARGETS counter_mvc DESTINATION bin)

@@ -1,2 +1,2 @@
 add_subdirectory (counter)
-# add_subdirectory (display)
+add_subdirectory (display)
